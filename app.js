@@ -51,7 +51,18 @@ const port = process.env.PORT || 3978;
 // });
 
 app.get('/ping', (req, res) => {
-  res.status(200).send('OK');
+  res.status(200).send({
+env:process.env.NODE_ENV,
+AZURE_OPENAI_ENDPOINT:process.env.AZURE_OPENAI_ENDPOINT,
+AZURE_OPENAI_MODEL:process.env.AZURE_OPENAI_MODEL,
+AZURE_OPENAI_KEY:process.env.AZURE_OPENAI_KEY,
+MicrosoftAppId:process.env.MicrosoftAppId,
+MicrosoftAppPassword:process.env.MicrosoftAppPassword,
+AZURE_OPENAI_DEPLOYMENT_ID:process.env.AZURE_OPENAI_DEPLOYMENT_ID,
+MicrosoftAppType:process.env.MicrosoftAppType,
+MicrosoftAppTenantId:process.env.MicrosoftAppTenantId
+
+  });
 });
 
 app.listen(port, () => {
