@@ -1,5 +1,5 @@
 const express = require('express');
-const { CloudAdapter, BotFrameworkAdapter } = require('botbuilder');
+const { CloudAdapter, BotFrameworkAdapter,ConfigurationBotFrameworkAuthentication } = require('botbuilder');
 const { TeamsBot } = require('./bot');
 require('dotenv').config();
 
@@ -13,13 +13,15 @@ const port = process.env.PORT || 3978;
 
 
 let adapter;
-if (process.env.NODE_ENV === 'production') {
-  const botFrameworkAuthentication = new ConfigurationBotFrameworkAuthentication(process.env);
-  adapter = new CloudAdapter(botFrameworkAuthentication);
+if (process.env.NODE_ENV === 'production' || process.env.USE_PRODUCTION_CREDENTIALS === 'true') {
+//   console.log('Using production configuration');
+//   const botFrameworkAuthentication = new ConfigurationBotFrameworkAuthentication(process.env);
+//   adapter = new CloudAdapter(botFrameworkAuthentication);
+adapter = new BotFrameworkAdapter({});
 } else {
+  console.log('Using development configuration');
   adapter = new BotFrameworkAdapter({});
 }
-
 
 // 添加錯誤處理
 adapter.onTurnError = async (context, error) => {
