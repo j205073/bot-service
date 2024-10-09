@@ -13,7 +13,7 @@ const port = process.env.PORT || 3978;
 
 
 let adapter;
-if (process.env.NODE_ENV === 'production' || process.env.USE_PRODUCTION_CREDENTIALS === 'true') {
+if (process.env.NODE_ENV === 'production') {
 //   console.log('Using production configuration');
 //   const botFrameworkAuthentication = new ConfigurationBotFrameworkAuthentication(process.env);
 //   adapter = new CloudAdapter(botFrameworkAuthentication);
