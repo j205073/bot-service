@@ -49,7 +49,7 @@ const port = process.env.PORT || 3978;
 //     res.status(500).send('Internal Server Error');
 //   }
 // });
-
+//
 app.get('/ping', (req, res) => {
   res.status(200).send({
 env:process.env.NODE_ENV,
